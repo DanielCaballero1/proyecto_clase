@@ -4,14 +4,16 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 public abstract class DAOGenerico <T> {
 	private Class<T> entityClass;
-
+	
+	protected abstract EntityManager getEntityManager();
+	
 	public DAOGenerico(Class<T> entityClass) {
 		this.entityClass = entityClass;
 	}
-
-	protected abstract EntityManager getEntityManager();
 
 	public void insertar(T entity) {
 		getEntityManager().persist(entity);// Es manipulado por EM

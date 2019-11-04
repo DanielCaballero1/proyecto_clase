@@ -21,7 +21,7 @@ public class JPAConfiguration {
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 		LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
 		em.setDataSource(dataSource());
-		em.setPackagesToScan(new String[] { "py.daniel.caballero.entidad" });
+		em.setPackagesToScan(new String[] { "py.daniel.caballero.entidad", "py.daniel.caballero.controller" });
 		JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		em.setJpaVendorAdapter(vendorAdapter);
 		em.setJpaProperties(additionalProperties()); 
@@ -31,18 +31,18 @@ public class JPAConfiguration {
 	@Bean
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName("org.postgresql.Driver");
-		dataSource.setUrl("jdbc:postgresql://localhost:5432/db_proyecto");
-		dataSource.setUsername("postgres");
-		dataSource.setPassword("123456");
+		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+		dataSource.setUrl("jdbc:mysql://localhost:3306/db_proyecto");
+		dataSource.setUsername("root");
+		dataSource.setPassword("");
 		return dataSource;
 	}
 
 	Properties additionalProperties() {
 		Properties properties = new Properties();
 		properties.setProperty("hibernate.hbm2ddl.auto", "update");
-		// properties.setProperty("hibernate.dialect","org.hibernate.dialect.MySQL5Dialect");
-		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
+		properties.setProperty("hibernate.dialect","org.hibernate.dialect.MySQL5Dialect");
+		// properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
 
 		properties.setProperty("hibernate.show_sql", "true");
 		return properties;

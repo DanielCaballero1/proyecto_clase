@@ -26,7 +26,7 @@ public class ProyectoController {
 	
 	
 	@Autowired
-	private ProyectoDAO ProyectoDAO;
+	public ProyectoDAO ProyectoDAO;
 
 	//Verbo POST es registrar o guardar
 	@RequestMapping(method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE, value="/{guardar}")										//Convertir de JSON a Java
