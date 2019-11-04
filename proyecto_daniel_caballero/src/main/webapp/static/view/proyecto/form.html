@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="registroProducto">
+<html ng-app="registroProyecto">
 
 <head >
 <meta charset="UTF-8">
@@ -18,10 +18,10 @@
 
 	angular.module("registroProyecto").controller("proyectoController",function($http,$scope){
 		
-		$scope.registrar=function(producto){
+		$scope.registrar=function(proyecto){
 			
 			//suficiente para registrar 
-			$http.post("http://localhost:8080/proyecto_daniel_caballero/proyecto",proyecto).success(function(data,status){
+			$http.post("http://localhost:8080/proyecto_daniel_caballero/proyecto/guardar",proyecto).success(function(data,status){
 				
 				console.log(data);
 				console.log($scope.proyecto);
@@ -57,7 +57,7 @@
         
         <div class="input-field col s6">
           <i class="material-icons prefix">phone</i>
-          <input id="descripcion" type="text" class="validate"ng-model="proyecto.descripcion">
+          <input id="descripcion" type="text" class="validate" ng-model="proyecto.descripcion">
           <label for="descripcion">Descripcion</label>
         </div>
                
